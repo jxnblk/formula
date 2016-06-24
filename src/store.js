@@ -14,6 +14,7 @@ const store = createStore({
   ],
   lineHeight: 1.375,
   height: 40,
+  border: 0,
   baselineShift: 0
 })
 

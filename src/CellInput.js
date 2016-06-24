@@ -1,7 +1,8 @@
 
 import { hcss } from 'jsxcss'
+import { alpha } from './util/colors'
 
-const Input = ({
+const CellInput = ({
   type = 'text',
   name,
   label,
@@ -11,11 +12,13 @@ const Input = ({
 }) => {
   const sx = {
     root: {
-      marginBottom: 16
     },
     label: {
-      display: 'block',
-      fontSize: 12,
+      position: 'absolute',
+      height: 1,
+      width: 1,
+      overflow: 'hidden',
+      clip: 'rect(1px, 1px, 1px, 1px)'
     },
     input: {
       boxSizing: 'border-box',
@@ -24,18 +27,22 @@ const Input = ({
       fontFamily: 'inherit',
       fontSize: 'inherit',
       lineHeight: 1.375,
-      paddingLeft: 8,
-      paddingRight: 8,
+      paddingLeft: 4,
+      paddingRight: 4,
+      paddingTop: 4,
+      paddingBottom: 4,
       margin: 0,
-      border: '1px solid',
-      borderColor: '#ccc',
-      borderRadius: 2,
+      // backgroundColor: 'transparent',
+      backgroundColor: alpha('#07c', 1/32),
+      border: 0,
+      borderRadius: 0,
       boxShadow: 'none',
       appearance: 'none',
+      ...props.style,
       ':focus': {
         outline: 'none',
         color: '#07c',
-        borderColor: '#07c',
+        backgroundColor: alpha('#07c', 1/16),
       }
     }
   }
@@ -58,5 +65,5 @@ const Input = ({
   )
 }
 
-export default Input
+export default CellInput
 

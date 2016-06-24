@@ -1,9 +1,10 @@
 
-import yo from 'yo-yo'
-import h from 'hyperscript'
+import { hcss } from 'jsxcss'
 import Heading from './Heading'
 import Input from './Input'
 import Table from './Table'
+import CellInput from './CellInput'
+import Preview from './Preview'
 
 const App = ({ state, setState }) => {
   const handleChange = (e) => {
@@ -11,34 +12,52 @@ const App = ({ state, setState }) => {
     setState({ [name]: value })
   }
 
-  const { title, height, scale } = state
+  const handleScaleChange = (i) => (e) => {
+    const { scale } = state
+    const n = parseInt(e.target.value)
+    scale[i] = n
+    setState({ scale })
+  }
+
+  const {
+    title,
+    height,
+    lineHeight,
+    scale
+  } = state
+
   return (
-    h('div', {}, [
-      Heading({
-        text: `${title} ${height}`
-      }),
-      Input({
+    <div>
+      {Heading({ text: title })}
+      {Input({
         type: 'number',
         name: 'height',
-        label: 'Height',
+        label: 'Base Height',
         value: height,
         oninput: handleChange
-      }),
-      Table({
+      })}
+      {Table({
         headers: [
           'font-size',
           'line-height',
           'UI height',
           'y padding'
         ],
-        rows: scale.reverse().map(s => [
-          s,
+        rows: scale.map((s, i) => [
+          CellInput({
+            type: 'number',
+            name: `scale_${i}`,
+            label: `Scale ${i}`,
+            value: s,
+            oninput: handleScaleChange(i)
+          }),
           state.lineHeight,
           0,
           0
         ])
-      })
-    ])
+      })}
+      {Preview(state)}
+    </div>
   )
 }
 
