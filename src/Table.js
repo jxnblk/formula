@@ -6,12 +6,14 @@ import h from 'hyperscript'
 const Table = ({
   headers = [],
   rows = [],
+  fixed
 }) => {
   const sx = {
     root: {
       width: '100%',
       borderCollapse: 'separate',
-      borderSpacing: 0
+      borderSpacing: 0,
+      tableLayout: fixed ? 'fixed' : null
     },
     th: {
       textAlign: 'left',
@@ -21,7 +23,7 @@ const Table = ({
       borderBottom: '1px solid'
     },
     td: {
-      verticalAlign: 'top',
+      verticalAlign: 'baseline',
       padding: 0,
       // paddingTop: 4,
       // paddingBottom: 4,
@@ -38,8 +40,12 @@ const Table = ({
       </thead>
       <tbody>
         {rows.map(r => (
-          <tr>
-            {r.map(d => <td style={sx.td}>{d}</td>)}
+          <tr style={r.style}>
+            {r.data.map(d => (
+              <td style={sx.td}>
+                {d}
+              </td>
+            ))}
           </tr>
         ))}
       </tbody>

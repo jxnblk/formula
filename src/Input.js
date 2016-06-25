@@ -16,6 +16,7 @@ const Input = ({
     label: {
       display: 'block',
       fontSize: 12,
+      marginBottom: 4
     },
     input: {
       boxSizing: 'border-box',
@@ -26,6 +27,8 @@ const Input = ({
       lineHeight: 1.375,
       paddingLeft: 8,
       paddingRight: 8,
+      paddingTop: 8,
+      paddingBottom: 8,
       margin: 0,
       border: '1px solid',
       borderColor: '#ccc',
@@ -36,6 +39,12 @@ const Input = ({
         outline: 'none',
         color: '#07c',
         borderColor: '#07c',
+      },
+      '::-webkit-inner-spin-button': {
+        appearance: 'none'
+      },
+      '::-webkit-outer-spin-button': {
+        appearance: 'none'
       }
     }
   }

@@ -6,18 +6,22 @@ function Store (initialState = {}) {
 
   Object.defineProperty(this, 'state', {
     get () {
-      return this._state
+      return {...this._state}
     },
     set (state) {
       this._state = {
         ...this._state,
         ...state
       }
-      this._listeners.forEach(l => l(this._state))
+      this.update()
     }
   })
 
   this.setState = (s) => this.state = s
+
+  this.update = () => {
+    this._listeners.forEach(l => l(this._state))
+  }
 
   this.subscribe = (l) => {
     if (typeof l === 'function') {
