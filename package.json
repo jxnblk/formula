@@ -1,7 +1,7 @@
 {
-  "name": "uicalc",
+  "name": "formula",
   "version": "1.0.0",
-  "description": "",
+  "description": "Bulletproof form and button styles that always line up",
   "main": "index.js",
   "scripts": {
     "bundle": "webpack -p",

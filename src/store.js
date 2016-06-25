@@ -14,18 +14,27 @@ const store = createStore({
   ],
   lineHeight: 1.375,
   pad: 0.5625,
-  paddingTop: 0.5625,
-  paddingBottom: 0.5625,
+  baselineShift: 0,
   padX: .5,
   border: 1,
   borderRadius: 4,
-  baselineShift: 0,
   showAllElements: false,
   getHeight (s) {
-    const { lineHeight, pad, paddingTop, paddingBottom, border } = store.state
-    return s * lineHeight + (paddingTop * s) + (paddingBottom * s) + (border * 2)
+    const { lineHeight, pad, border } = store.state
+    return s * lineHeight + (pad * s * 2) + (border * 2)
   }
 })
+
+export const padding = {
+  get top () {
+    const { pad, baselineShift } = store.state
+    return pad + baselineShift
+  },
+  get bottom () {
+    const { pad, baselineShift } = store.state
+    return pad - baselineShift
+  }
+}
 
 // Actions
 export const handleChange = (e) => {
@@ -46,7 +55,6 @@ export const handleScaleChange = (e, i) => {
 
 export const handleHeightChange = (e, i) => {
   e.preventDefault()
-  // To do: account for border
   const { state, update, setState } = store
   const { value } = e.target
   const { scale, border, lineHeight, baselineShift } = state
@@ -54,27 +62,17 @@ export const handleHeightChange = (e, i) => {
   const n = parseFloat(value)
   const px = (n - fs * lineHeight - border * 2) / 2
   const pad = px / fs
-  const paddingTop = pad + baselineShift
-  const paddingBottom = pad - baselineShift
-  console.log(paddingTop, paddingBottom)
 
-  // if (!isNaN(pad) && pad > 0) {
-  if (!isNaN(paddingTop) && !isNaN(paddingBottom)) {
+  if (!isNaN(pad)) {
     setState({
-      pad,
-      paddingTop,
-      paddingBottom
+      pad
     })
   } else if (value.length === 0) {
     // To do: handle blank values
     return
-    // setState({ pad: 0 })
   } else {
     update()
   }
-}
-
-export const handlePaddingChange = (e) => {
 }
 
 export const handleBaselineChange = (e) => {
@@ -86,8 +84,6 @@ export const handleBaselineChange = (e) => {
   if (!isNaN(n)) {
     setState({
       baselineShift: n,
-      paddingTop: pad + n,
-      paddingBottom: pad - n
     })
   }
 }

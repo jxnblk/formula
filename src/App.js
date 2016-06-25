@@ -4,6 +4,7 @@ import Heading from './Heading'
 import Form from './Form'
 import Preview from './Preview'
 import Css from './Css'
+import State from './State'
 import { red, alpha } from './util/colors'
 
 
@@ -39,6 +40,7 @@ const App = (store) => {
         getHeight
       })}
       {Css(state)}
+      {State(state)}
     </div>
   )
 }

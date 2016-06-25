@@ -2,6 +2,9 @@
 import { hcss } from 'jsxcss'
 import { red, blue, alpha } from './util/colors'
 import Heading from './Heading'
+import {
+  padding
+} from './store'
 
 const round = (n, d = 0) => {
   return n ? +n.toFixed(d) : ''
@@ -18,8 +21,8 @@ const Preview = ({
   showAllElements,
   ...props
 }) => {
-  const paddingTop = props.paddingTop + 'em'
-  const paddingBottom = props.paddingBottom + 'em'
+  const paddingTop = padding.top + 'em'
+  const paddingBottom = padding.bottom + 'em'
 
   const paddingLeft = `${padX}em`
   const paddingRight = paddingLeft
@@ -65,7 +68,7 @@ const Preview = ({
       verticalAlign: 'baseline',
       fontSize: 'inherit',
       fontFamily: 'inherit',
-      backgroundColor: 'white',
+      backgroundColor: 'transparent',
       appearance: 'none',
       borderWidth: border,
       borderStyle: 'solid',
@@ -138,8 +141,9 @@ const Preview = ({
             ) : null}
             <code style={sx.code}>
               font-size: {round(s, 1)}px,
-              y-padding: {round(pad, 5)}em,
-              height: {round(getHeight(s), 2)}px
+              height: {round(getHeight(s), 2)}px,
+              padding-top: {round(padding.top, 5)}em,
+              padding-bottom: {round(padding.bottom, 5)}em
             </code>
           </div>
         </div>

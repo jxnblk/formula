@@ -15,8 +15,6 @@ const Form = ({
   lineHeight,
   pad,
   baselineShift,
-  paddingTop,
-  paddingBottom,
   padX,
   border,
   getHeight
@@ -34,28 +32,35 @@ const Form = ({
             'Font Size',
             'Total Height',
             'Line Height',
-            'Baseline Shift (em)',
-            'Padding Top (em)',
-            'Padding Bottom (em)',
+            'Y Padding (em)',
             'X Padding (em)',
+            'Baseline Shift (em)',
             'Border Width',
           ],
           rows: scale.map((s, i) => {
             const nonInt = getHeight(s) % 1 > 0
+            const isBase = s === 16
+            const props = {
+              hideLabel: true,
+              big: isBase
+            }
             return {
-              style: {},
+              style: {
+              },
               data: [
                 CellInput({
+                  ...props,
                   type: 'number',
                   name: `scale_${i}`,
                   label: `Scale ${i}`,
                   value: s,
-                  readOnly: s === 16,
+                  readOnly: isBase,
                   oninput: (e) => {
                     handleScaleChange(e, i)
                   }
                 }),
                 CellInput({
+                  ...props,
                   type: 'number',
                   name: `height_${i}`,
                   label: `Height ${i}`,
@@ -67,6 +72,7 @@ const Form = ({
                   }
                 }),
                 CellInput({
+                  ...props,
                   type: 'number',
                   name: 'lineHeight',
                   label: 'Line Height',
@@ -79,36 +85,18 @@ const Form = ({
                   step: 1/32
                 }),
                 CellInput({
+                  ...props,
                   type: 'number',
-                  name: 'baselineShift',
-                  label: `Baseline Shift ${i}`,
-                  value: baselineShift,
-                  oninput: (e) => handleBaselineChange(e),
-                  min: -.5,
-                  max: .5,
-                  step: 1/64
-                }),
-                CellInput({
-                  type: 'number',
-                  name: 'paddingTop',
-                  label: `Padding Top ${i}`,
-                  value: paddingTop,
+                  name: 'pad',
+                  label: `Y Padding ${i}`,
+                  value: pad,
                   oninput: (e) => handleChange(e),
                   min: 0,
                   max: 3,
                   step: 1/64
                 }),
                 CellInput({
-                  type: 'number',
-                  name: 'paddingBottom',
-                  label: `Padding Bottom ${i}`,
-                  value: paddingBottom,
-                  oninput: (e) => handleChange(e),
-                  min: 0,
-                  max: 3,
-                  step: 1/64
-                }),
-                CellInput({
+                  ...props,
                   type: 'number',
                   name: 'padX',
                   label: `X Padding ${i}`,
@@ -119,6 +107,18 @@ const Form = ({
                   step: 1/64
                 }),
                 CellInput({
+                  ...props,
+                  type: 'number',
+                  name: 'baselineShift',
+                  label: `Baseline Shift ${i}`,
+                  value: baselineShift,
+                  oninput: (e) => handleBaselineChange(e),
+                  min: -.5,
+                  max: .5,
+                  step: 1/64
+                }),
+                CellInput({
+                  ...props,
                   type: 'number',
                   name: 'border',
                   label: 'Border',

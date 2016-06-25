@@ -8,17 +8,28 @@ const CellInput = ({
   label,
   value,
   oninput,
+  hideLabel,
+  big,
   ...props
 }) => {
-  const sx = {
-    root: {
-    },
-    label: {
+  const labelStyles = hideLabel ? {
       position: 'absolute',
       height: 1,
       width: 1,
       overflow: 'hidden',
       clip: 'rect(1px, 1px, 1px, 1px)'
+    } : {
+      fontSize: 12
+    }
+
+  const paddingTop = big ? 12 : 4
+  const paddingBottom = paddingTop
+
+  const sx = {
+    root: {
+    },
+    label: {
+      ...labelStyles
     },
     input: {
       boxSizing: 'border-box',
@@ -29,8 +40,8 @@ const CellInput = ({
       lineHeight: 1.375,
       paddingLeft: 4,
       paddingRight: 4,
-      paddingTop: 4,
-      paddingBottom: 4,
+      paddingTop,
+      paddingBottom,
       margin: 0,
       backgroundColor: 'transparent',
       // backgroundColor: alpha('#07c', 1/32),

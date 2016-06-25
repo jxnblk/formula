@@ -1,6 +1,7 @@
 
 import { hcss } from 'jsxcss'
 import Heading from './Heading'
+import { padding } from './store'
 
 const Css = ({
   lineHeight,
@@ -11,8 +12,8 @@ const css = `
 .input {
   /* Calculated properties */
   line-height: ${lineHeight};
-  padding-top: ${pad}em;
-  padding-bottom: ${pad}em;
+  padding-top: ${padding.top}em;
+  padding-bottom: ${padding.bottom}em;
   border-width: ${border};
 
   box-sizing: border-box;
@@ -31,8 +32,8 @@ const css = `
 .button {
   /* Calculated properties */
   line-height: ${lineHeight};
-  padding-top: ${pad}em;
-  padding-bottom: ${pad}em;
+  padding-top: ${padding.top}em;
+  padding-bottom: ${padding.bottom}em;
   border-width: ${border};
 
   box-sizing: border-box;
