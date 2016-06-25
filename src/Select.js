@@ -1,12 +1,13 @@
 
 import { hcss } from 'jsxcss'
+import h from 'hyperscript'
 import { alpha } from './util/colors'
 
-const CellInput = ({
-  type = 'text',
+const Select = ({
   name,
   label,
   value,
+  options,
   oninput,
   hideLabel,
   big,
@@ -31,7 +32,7 @@ const CellInput = ({
     label: {
       ...labelStyles
     },
-    input: {
+    select: {
       boxSizing: 'border-box',
       display: 'block',
       width: '100%',
@@ -45,8 +46,9 @@ const CellInput = ({
       margin: 0,
       backgroundColor: 'transparent',
       // backgroundColor: alpha('#07c', 1/32),
-      border: 0,
-      borderRadius: 0,
+      border: '1px solid',
+      borderColor: alpha('#000', 1/4),
+      borderRadius: 2,
       boxShadow: 'none',
       appearance: 'none',
       ...props.style,
@@ -58,36 +60,58 @@ const CellInput = ({
       ':disabled': {
         opacity: .5
       },
-      ':read-only': {
-        color: 'inherit',
-        backgroundColor: alpha('#000', 1/32)
-      },
-      '::-webkit-inner-spin-button': {
-        appearance: 'none'
-      },
-      '::-webkit-outer-spin-button': {
-        appearance: 'none'
-      }
     }
   }
 
+  return (
+    h('div', [
+      h('label', { style: sx.label }, label),
+      h('select', {
+        name,
+        value,
+        style: sx.select,
+        oninput: (e) => {
+          e.preventDefault()
+          oninput(e)
+        }
+      },
+        options.map(o => (
+          h('option', {
+            selected: o === value
+          }, o)
+        ))
+      )
+    ])
+  )
+
+  /*
+   * to do: figure out select issues in hyperscript
   return (
     <div style={sx.root}>
       <label htmlFor={name}
         style={sx.label}>
         {label}
       </label>
-      <input
+      <select
         {...props}
-        type={type}
         name={name}
         id={name}
         value={value}
-        style={sx.input}
-        oninput={oninput} />
+        onchange={(e) => {
+          console.log('input', e)
+          oninput(e)
+        }}>
+        {options.map((o, i) => (
+          <option>
+            {o}
+          </option>
+        ))}
+      </select>
     </div>
   )
+  */
+
 }
 
-export default CellInput
+export default Select
 

@@ -7,7 +7,7 @@ import {
   handleBaselineChange
 } from './store'
 import Table from './Table'
-import CellInput from './CellInput'
+import Input from './Input'
 import { red, alpha } from './util/colors'
 
 const Form = ({
@@ -15,14 +15,9 @@ const Form = ({
   lineHeight,
   pad,
   baselineShift,
-  padX,
   border,
   getHeight
 }) => {
-  const _getHeight = (s) => {
-    return s * lineHeight + (pad * 2 * s) + (border * 2)
-  }
-
   return (
     <div>
       <form>
@@ -33,7 +28,6 @@ const Form = ({
             'Total Height',
             'Line Height',
             'Y Padding (em)',
-            'X Padding (em)',
             'Baseline Shift (em)',
             'Border Width',
           ],
@@ -48,7 +42,7 @@ const Form = ({
               style: {
               },
               data: [
-                CellInput({
+                Input({
                   ...props,
                   type: 'number',
                   name: `scale_${i}`,
@@ -59,7 +53,7 @@ const Form = ({
                     handleScaleChange(e, i)
                   }
                 }),
-                CellInput({
+                Input({
                   ...props,
                   type: 'number',
                   name: `height_${i}`,
@@ -71,7 +65,7 @@ const Form = ({
                     backgroundColor: nonInt ? alpha(red, 1/8) : null
                   }
                 }),
-                CellInput({
+                Input({
                   ...props,
                   type: 'number',
                   name: 'lineHeight',
@@ -84,7 +78,7 @@ const Form = ({
                   max: 2,
                   step: 1/32
                 }),
-                CellInput({
+                Input({
                   ...props,
                   type: 'number',
                   name: 'pad',
@@ -95,18 +89,7 @@ const Form = ({
                   max: 3,
                   step: 1/64
                 }),
-                CellInput({
-                  ...props,
-                  type: 'number',
-                  name: 'padX',
-                  label: `X Padding ${i}`,
-                  value: padX,
-                  oninput: (e) => handleChange(e),
-                  min: 0,
-                  max: 3,
-                  step: 1/64
-                }),
-                CellInput({
+                Input({
                   ...props,
                   type: 'number',
                   name: 'baselineShift',
@@ -117,7 +100,7 @@ const Form = ({
                   max: .5,
                   step: 1/64
                 }),
-                CellInput({
+                Input({
                   ...props,
                   type: 'number',
                   name: 'border',

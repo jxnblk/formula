@@ -1,5 +1,6 @@
 
 import { hcss } from 'jsxcss'
+import { alpha } from './util/colors'
 
 const Input = ({
   type = 'text',
@@ -7,16 +8,28 @@ const Input = ({
   label,
   value,
   oninput,
+  hideLabel,
+  big,
   ...props
 }) => {
+  const labelStyles = hideLabel ? {
+      position: 'absolute',
+      height: 1,
+      width: 1,
+      overflow: 'hidden',
+      clip: 'rect(1px, 1px, 1px, 1px)'
+    } : {
+      fontSize: 12
+    }
+
+  const paddingTop = big ? 12 : 4
+  const paddingBottom = paddingTop
+
   const sx = {
     root: {
-      marginBottom: 16
     },
     label: {
-      display: 'block',
-      fontSize: 12,
-      marginBottom: 4
+      ...labelStyles
     },
     input: {
       boxSizing: 'border-box',
@@ -25,20 +38,29 @@ const Input = ({
       fontFamily: 'inherit',
       fontSize: 'inherit',
       lineHeight: 1.375,
-      paddingLeft: 8,
-      paddingRight: 8,
-      paddingTop: 8,
-      paddingBottom: 8,
+      paddingLeft: 4,
+      paddingRight: 4,
+      paddingTop,
+      paddingBottom,
       margin: 0,
-      border: '1px solid',
-      borderColor: '#ccc',
-      borderRadius: 2,
+      backgroundColor: 'transparent',
+      // backgroundColor: alpha('#07c', 1/32),
+      border: 0,
+      borderRadius: 0,
       boxShadow: 'none',
       appearance: 'none',
+      ...props.style,
       ':focus': {
         outline: 'none',
         color: '#07c',
-        borderColor: '#07c',
+        backgroundColor: alpha('#07c', 1/16),
+      },
+      ':disabled': {
+        opacity: .5
+      },
+      ':read-only': {
+        color: 'inherit',
+        backgroundColor: alpha('#000', 1/32)
       },
       '::-webkit-inner-spin-button': {
         appearance: 'none'

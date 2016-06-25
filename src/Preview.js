@@ -1,9 +1,11 @@
 
 import { hcss } from 'jsxcss'
+import h from 'hyperscript'
 import { red, blue, alpha } from './util/colors'
 import Heading from './Heading'
 import {
-  padding
+  padding,
+  handleToggle
 } from './store'
 
 const round = (n, d = 0) => {
@@ -11,14 +13,15 @@ const round = (n, d = 0) => {
 }
 
 const Preview = ({
+  fontFamily,
   scale,
   lineHeight,
   border,
   pad,
   padX,
   borderRadius,
-  getHeight,
   showAllElements,
+  getHeight,
   ...props
 }) => {
   const paddingTop = padding.top + 'em'
@@ -37,6 +40,7 @@ const Preview = ({
 
   const sx = {
     root: {
+      fontFamily,
       paddingTop: 32,
       paddingBottom: 32,
       overflowX: 'scroll',
@@ -115,6 +119,12 @@ const Preview = ({
         padding: 0,
       }
     },
+    extras: {
+      display: 'inline-block'
+    },
+    checkbox: {
+      fontSize: 12
+    }
   }
 
   return (
@@ -133,7 +143,7 @@ const Preview = ({
               value={`${s}px Input`} />
             <button style={sx.button}>Button</button>
             {showAllElements ? (
-              <div>
+              <div style={sx.extras}>
                 <a href='#!' style={sx.button}>Link Button</a>
                 <input type='button' style={sx.button} value='Input Button' />
                 <input style={sx.input} placeholder='placeholder' />
@@ -148,6 +158,17 @@ const Preview = ({
           </div>
         </div>
       ))}
+      <div>
+        <label style={sx.checkbox}>
+          {h('input', {
+            name: 'showAllElements',
+            type: 'checkbox',
+            checked: showAllElements,
+            onchange: (e) => handleToggle(e)
+          })}
+          Show more elements
+        </label>
+      </div>
     </div>
   )
 }

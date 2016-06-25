@@ -2,6 +2,8 @@
 import { hcss } from 'jsxcss'
 import Heading from './Heading'
 import Form from './Form'
+import ExtrasForm from './ExtrasForm'
+import Header from './Header'
 import Preview from './Preview'
 import Css from './Css'
 import State from './State'
@@ -19,10 +21,6 @@ const App = (store) => {
     pad
   } = state
 
-  const getHeight = (s) => {
-    return s * lineHeight + (pad * 2 * s) + (border * 2)
-  }
-
   const sx = {
     root: {
       paddingLeft: 32,
@@ -32,13 +30,10 @@ const App = (store) => {
 
   return (
     <div style={sx.root}>
-      <h1>{title}</h1>
-      <p>{description}</p>
+      {Header(state)}
       {Form(state)}
-      {Preview({
-        ...state,
-        getHeight
-      })}
+      {Preview(state)}
+      {ExtrasForm(state)}
       {Css(state)}
       {State(state)}
     </div>

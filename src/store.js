@@ -5,6 +5,7 @@ import createStore from './create-store'
 const store = createStore({
   title: 'Formula',
   description: 'Bulletproof form and button styles that always line up',
+  fontFamily: '-apple-system, sans-serif',
   scale: [
     16,
     24,
@@ -43,6 +44,12 @@ export const handleChange = (e) => {
   const n = e.target.type === 'number' && !/\.$/.test(e.target.value)
     ? parseFloat(value) : null
   setState({ [name]: n || value })
+}
+
+export const handleToggle = (e) => {
+  const { setState } = store
+  const { name, checked } = e.target
+  setState({ [name]: checked })
 }
 
 export const handleScaleChange = (e, i) => {
