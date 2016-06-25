@@ -2,6 +2,7 @@
 import { hcss } from 'jsxcss'
 import yo from 'yo-yo'
 import h from 'hyperscript'
+import { alpha } from './util/colors'
 
 const Table = ({
   headers = [],
@@ -16,6 +17,7 @@ const Table = ({
       tableLayout: fixed ? 'fixed' : null
     },
     th: {
+      fontSize: 12,
       textAlign: 'left',
       verticalAlign: 'bottom',
       paddingTop: 4,
@@ -27,7 +29,8 @@ const Table = ({
       padding: 0,
       // paddingTop: 4,
       // paddingBottom: 4,
-      borderBottom: '1px solid rgba(0, 0, 0, .125)'
+      borderBottom: '1px solid',
+      borderColor: alpha('#000', 1/8),
     }
   }
 

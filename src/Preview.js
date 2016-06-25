@@ -1,16 +1,28 @@
 
 import { hcss } from 'jsxcss'
 import { red, blue, alpha } from './util/colors'
+import Heading from './Heading'
+
+const round = (n, d = 0) => {
+  return n ? +n.toFixed(d) : ''
+}
 
 const Preview = ({
   scale,
   lineHeight,
   border,
   pad,
-  getHeight
+  padX,
+  borderRadius,
+  getHeight,
+  showAllElements,
+  ...props
 }) => {
-  const paddingTop = `${pad}em`
-  const paddingBottom = paddingTop
+  const paddingTop = props.paddingTop + 'em'
+  const paddingBottom = props.paddingBottom + 'em'
+
+  const paddingLeft = `${padX}em`
+  const paddingRight = paddingLeft
 
   const rowRules = `
   inset 0 1px ${alpha(red, 1/2)},
@@ -29,18 +41,16 @@ const Preview = ({
     row: {
       whiteSpace: 'nowrap',
       boxShadow: rowRules,
+      marginBottom: 16,
       // Account for lineHeight
       // backgroundImage: baseline,
       // backgroundPosition: `0 ${pad + 1 + 2/16}em`,
     },
-    pre: {
-      fontFamily: 'Menlo, monospace',
-      fontSize: 12,
-      marginTop: 4,
-      marginBottom: 16
-    },
     code: {
       fontFamily: 'Menlo, monospace',
+      fontSize: 12,
+      marginLeft: 16,
+      color: alpha(red, 1/4)
     },
     label: {
       marginRight: 16
@@ -49,19 +59,25 @@ const Preview = ({
       lineHeight,
       paddingTop,
       paddingBottom,
+      paddingLeft,
+      paddingRight,
       boxSizing: 'border-box',
       verticalAlign: 'baseline',
       fontSize: 'inherit',
       fontFamily: 'inherit',
-      backgroundColor: alpha(blue, 1/2),
-      boxShadow: 'none',
+      backgroundColor: 'white',
       appearance: 'none',
       borderWidth: border,
       borderStyle: 'solid',
-      borderColor: alpha(blue, 3/4),
-      borderRadius: 0,
+      borderColor: alpha('#000', 1/4),
+      boxShadow: `inset 0 0 0 1px ${alpha('#000', 1/4)}`,
+      borderRadius,
       margin: 0,
       marginRight: 16,
+      ':focus': {
+        outline: 'none',
+        boxShadow: `inset 0 0 0 1px ${alpha(blue, 3/4)}`,
+      },
       '::-moz-focus-inner': {
         border: 0,
         padding: 0,
@@ -73,20 +89,22 @@ const Preview = ({
       lineHeight,
       paddingTop,
       paddingBottom,
-      // height: `${lineHeight + pad * 2}em`,
+      paddingLeft,
+      paddingRight,
       boxSizing: 'border-box',
       fontSize: 'inherit',
       fontFamily: 'inherit',
       display: 'inline-block',
       verticalAlign: 'baseline',
-      color: 'inherit',
-      backgroundColor: alpha(blue, 1/2),
+      color: 'white',
+      backgroundColor: 'black',
       appearance: 'none',
       textDecoration: 'none',
+      cursor: 'pointer',
       borderWidth: border,
       borderStyle: 'solid',
-      borderColor: alpha(blue, 3/4),
-      borderRadius: 0,
+      borderColor: alpha('#fff', 1/4),
+      borderRadius,
       margin: 0,
       marginRight: 16,
       '::-moz-focus-inner': {
@@ -98,23 +116,32 @@ const Preview = ({
 
   return (
     <div style={sx.root}>
+      {Heading({ text: 'Preview' })}
       {scale.map((s, i) => (
         <div>
           <div style={{
             ...sx.row,
             fontSize: s
           }}>
-            <label style={sx.label}>{s}px Label</label>
+            {showAllElements ? (
+              <label style={sx.label}>{s}px Label</label>
+            ) : null}
             <input style={sx.input}
-              value='Input' />
+              value={`${s}px Input`} />
             <button style={sx.button}>Button</button>
-            <a href='#!' style={sx.button}>Link Button</a>
-            <input type='button' style={sx.button} value='Input Button' />
-            <input style={sx.input} placeholder='placeholder' />
+            {showAllElements ? (
+              <div>
+                <a href='#!' style={sx.button}>Link Button</a>
+                <input type='button' style={sx.button} value='Input Button' />
+                <input style={sx.input} placeholder='placeholder' />
+              </div>
+            ) : null}
+            <code style={sx.code}>
+              font-size: {round(s, 1)}px,
+              y-padding: {round(pad, 5)}em,
+              height: {round(getHeight(s), 2)}px
+            </code>
           </div>
-          <pre style={sx.pre}>
-            <code style={sx.code}>{pad}em, {getHeight(s)}px</code>
-          </pre>
         </div>
       ))}
     </div>

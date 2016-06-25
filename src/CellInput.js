@@ -32,7 +32,8 @@ const CellInput = ({
       paddingTop: 4,
       paddingBottom: 4,
       margin: 0,
-      backgroundColor: alpha('#07c', 1/32),
+      backgroundColor: 'transparent',
+      // backgroundColor: alpha('#07c', 1/32),
       border: 0,
       borderRadius: 0,
       boxShadow: 'none',
@@ -45,6 +46,10 @@ const CellInput = ({
       },
       ':disabled': {
         opacity: .5
+      },
+      ':read-only': {
+        color: 'inherit',
+        backgroundColor: alpha('#000', 1/32)
       },
       '::-webkit-inner-spin-button': {
         appearance: 'none'

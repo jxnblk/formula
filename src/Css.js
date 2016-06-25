@@ -1,5 +1,6 @@
 
 import { hcss } from 'jsxcss'
+import Heading from './Heading'
 
 const Css = ({
   lineHeight,
@@ -54,7 +55,10 @@ const css = `
     }
   }
   return (
-    <pre style={sx.pre}>{css}</pre>
+    <section>
+      {Heading({ text: 'CSS' })}
+      <pre style={sx.pre}>{css}</pre>
+    </section>
   )
 }
 
