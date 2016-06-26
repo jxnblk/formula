@@ -1,6 +1,10 @@
 
 import createStore from './create-store'
 import pkg from '../package.json'
+import { getParams } from './location'
+
+const initialState = getParams()
+// console.log(initialState)
 
 const store = createStore({
   title: 'Formula',
@@ -21,6 +25,7 @@ const store = createStore({
   borderRadius: 4,
   proportionalBorderRadius: false,
   showAllElements: false,
+  ...initialState,
   getHeight (s) {
     const { lineHeight, pad, border } = store.state
     return s * lineHeight + (pad * s * 2) + (border * 2)
@@ -43,7 +48,7 @@ export const handleChange = (e) => {
   const { setState } = store
   const { name, value } = e.target
   const n = e.target.type === 'number' && !/\.$/.test(e.target.value)
-    ? parseFloat(value) : null
+    ? +value : null
   setState({ [name]: typeof n === 'number' ? n : value })
 }
 
@@ -56,7 +61,7 @@ export const handleToggle = (e) => {
 export const handleScaleChange = (e, i) => {
   const { state, setState } = store
   const { scale } = state
-  const n = parseInt(e.target.value)
+  const n = +e.target.value
   scale[i] = n
   setState({ scale })
 }

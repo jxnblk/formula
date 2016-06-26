@@ -42,13 +42,14 @@ const Preview = ({
     root: {
       fontFamily: fontFamily + ', sans-serif',
       paddingTop: 32,
-      paddingBottom: 32,
+      paddingBottom: 16,
       overflowX: 'scroll',
     },
     row: {
       whiteSpace: 'nowrap',
       boxShadow: rowRules,
-      marginBottom: 32,
+      marginTop: 32,
+      marginBottom: 8,
       // Account for lineHeight
       // backgroundImage: baseline,
       // backgroundPosition: `0 ${pad + 1 + 2/16}em`,

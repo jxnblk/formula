@@ -24,8 +24,12 @@ const App = (store) => {
 
   const sx = {
     root: {
-      paddingLeft: 32,
-      paddingRight: 32,
+      paddingLeft: 16,
+      paddingRight: 16,
+      '@media screen and (min-width: 32em)': {
+        paddingLeft: 32,
+        paddingRight: 32,
+      },
       '@media screen and (min-width: 52em)': {
         paddingTop: 32,
         paddingLeft: 64,

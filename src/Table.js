@@ -16,12 +16,15 @@ const Table = ({
       tableLayout: fixed ? 'fixed' : null
     },
     th: {
-      fontSize: 12,
+      fontSize: 10,
       textAlign: 'left',
       verticalAlign: 'bottom',
       paddingTop: 4,
       paddingBottom: 4,
-      borderBottom: '1px solid'
+      borderBottom: '1px solid',
+      '@media screen and (min-width: 32em)': {
+        fontSize: 12
+      }
     },
     td: {
       verticalAlign: 'baseline',
