@@ -41,8 +41,7 @@ const Preview = ({
   const sx = {
     root: {
       fontFamily: fontFamily + ', sans-serif',
-      paddingTop: 32,
-      paddingBottom: 16,
+      marginBottom: 16,
       overflowX: 'scroll',
     },
     row: {
@@ -78,7 +77,7 @@ const Preview = ({
       borderWidth: border,
       borderStyle: 'solid',
       borderColor: alpha('#000', 1/4),
-      boxShadow: `inset 0 0 0 1px ${alpha('#000', 1/4)}`,
+      boxShadow: border ? 'none' : `inset 0 0 0 1px ${alpha('#000', 1/4)}`,
       borderRadius,
       margin: 0,
       marginRight: 16,

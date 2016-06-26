@@ -31,11 +31,17 @@ const Form = ({
     <div>
       <form>
         {Table({
+          fixed: true,
           headers: [
-            'Font Family',
-            'X Padding (em)',
-            'Border Radius',
-            'Proportional',
+            {
+              data: 'Font Family',
+              style: {
+                width: '37.5%'
+              }
+            },
+            { data: 'X Padding (em)' },
+            { data: 'Border Radius' },
+            { data: 'Proportional' },
           ],
           rows: [
             {
