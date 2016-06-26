@@ -1,15 +1,12 @@
 
 import { hcss } from 'jsxcss'
-import Header from './Header'
 import Form from './Form'
 import Preview from './Preview'
 import ExtrasForm from './ExtrasForm'
 import About from './About'
 import Css from './Css'
-import State from './State'
 import Footer from './Footer'
 import { red, alpha } from './util/colors'
-
 
 const App = (store) => {
   const { state, setState } = store
@@ -40,7 +37,6 @@ const App = (store) => {
 
   return (
     <div style={sx.root}>
-      {Header(state)}
       {Form(state)}
       {Preview(state)}
       {ExtrasForm(state)}

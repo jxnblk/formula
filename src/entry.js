@@ -17,6 +17,5 @@ store.subscribe(update)
 store.subscribe(updateParams)
 store.subscribe(handleFontChange)
 
-document.body.appendChild(tree)
-
+div.appendChild(tree)
 
