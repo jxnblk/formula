@@ -1,10 +1,10 @@
 
 import createStore from './create-store'
-// import pkg from '../package.json'
+import pkg from '../package.json'
 
 const store = createStore({
   title: 'Formula',
-  description: 'Bulletproof form and button styles that always line up',
+  description: pkg.description,
   fontFamily: '-apple-system, sans-serif',
   scale: [
     16,
@@ -13,12 +13,13 @@ const store = createStore({
     14,
     12
   ],
-  lineHeight: 1.375,
-  pad: 0.5625,
+  lineHeight: 1.5,
+  pad: 0.25,
   baselineShift: 0,
-  padX: .5,
-  border: 1,
+  padX: .625,
+  border: 0,
   borderRadius: 4,
+  proportionalBorderRadius: false,
   showAllElements: false,
   getHeight (s) {
     const { lineHeight, pad, border } = store.state
@@ -43,7 +44,7 @@ export const handleChange = (e) => {
   const { name, value } = e.target
   const n = e.target.type === 'number' && !/\.$/.test(e.target.value)
     ? parseFloat(value) : null
-  setState({ [name]: n || value })
+  setState({ [name]: typeof n === 'number' ? n : value })
 }
 
 export const handleToggle = (e) => {

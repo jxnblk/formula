@@ -1,6 +1,5 @@
 
 import { hcss } from 'jsxcss'
-import h from 'hyperscript'
 import { alpha } from './util/colors'
 
 const Select = ({
@@ -25,6 +24,14 @@ const Select = ({
 
   const paddingTop = big ? 12 : 4
   const paddingBottom = paddingTop
+  const arrowStyles = {
+    backgroundImage: `
+      linear-gradient(-45deg, transparent 50%, currentcolor 50%),
+      linear-gradient(45deg, transparent 50%, currentcolor 50%)`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '6px 8px',
+      backgroundPosition: 'right 8px center, right 14px center'
+  }
 
   const sx = {
     root: {
@@ -44,13 +51,14 @@ const Select = ({
       paddingTop,
       paddingBottom,
       margin: 0,
+      color: 'inherit',
       backgroundColor: 'transparent',
-      // backgroundColor: alpha('#07c', 1/32),
-      border: '1px solid',
-      borderColor: alpha('#000', 1/4),
+      border: 0, //'1px solid',
+      // borderColor: alpha('#000', 1/4),
       borderRadius: 2,
       boxShadow: 'none',
       appearance: 'none',
+      ...arrowStyles,
       ...props.style,
       ':focus': {
         outline: 'none',
@@ -64,52 +72,28 @@ const Select = ({
   }
 
   return (
-    h('div', [
-      h('label', { style: sx.label }, label),
-      h('select', {
-        name,
-        value,
-        style: sx.select,
-        oninput: (e) => {
-          e.preventDefault()
-          oninput(e)
-        }
-      },
-        options.map(o => (
-          h('option', {
-            selected: o === value
-          }, o)
-        ))
-      )
-    ])
-  )
-
-  /*
-   * to do: figure out select issues in hyperscript
-  return (
     <div style={sx.root}>
       <label htmlFor={name}
         style={sx.label}>
         {label}
       </label>
       <select
-        {...props}
         name={name}
         id={name}
         value={value}
-        onchange={(e) => {
-          console.log('input', e)
+        style={sx.select}
+        oninput={(e) => {
+          e.preventDefault()
           oninput(e)
         }}>
         {options.map((o, i) => (
-          <option>
+          <option selected={o === value}>
             {o}
           </option>
         ))}
       </select>
     </div>
   )
-  */
 
 }
 

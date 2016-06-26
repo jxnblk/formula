@@ -1,39 +1,41 @@
 
 import { hcss } from 'jsxcss'
 import {
-  handleChange
+  handleChange,
+  handleToggle
 } from './store'
 import Table from './Table'
 import Input from './Input'
 import Select from './Select'
 import { red, alpha } from './util/colors'
+import { webfonts } from './webfonts'
 
 const fontFamilies = [
-  'Avenir Next',
-  '-apple-system, sans-serif',
+  '-apple-system',
   'Helvetica',
+  'Avenir Next',
   'Verdana',
   'Lucida Grande',
   'Georgia',
-  'Roboto',
-  'Roboto Mono',
   'SF Mono',
+  ...webfonts
 ]
 
 const Form = ({
   fontFamily,
   padX,
-  borderRadius
+  borderRadius,
+  proportionalBorderRadius
 }) => {
   return (
     <div>
       <form>
         {Table({
-          fixed: true,
           headers: [
             'Font Family',
             'X Padding (em)',
             'Border Radius',
+            'Proportional',
           ],
           rows: [
             {
@@ -68,6 +70,14 @@ const Form = ({
                   oninput: (e) => handleChange(e),
                   min: 0
                 }),
+                <label style={{ fontSize: 14 }}>
+                  <input type='checkbox'
+                    style={{ marginRight: 8 }}
+                    name='proportionalBorderRadius'
+                    checked={proportionalBorderRadius}
+                    onchange={(e) => handleToggle(e)} />
+                  Proportional Radii
+                </label>
               ]
             }
           ]

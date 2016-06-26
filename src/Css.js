@@ -49,6 +49,9 @@ const css = `
 `
 
   const sx = {
+    root: {
+      marginBottom: 48
+    },
     pre: {
       fontFamily: 'Menlo, monospace',
       fontSize: 12,
@@ -56,7 +59,7 @@ const css = `
     }
   }
   return (
-    <section>
+    <section style={sx.root}>
       {Heading({ text: 'CSS' })}
       <pre style={sx.pre}>{css}</pre>
     </section>

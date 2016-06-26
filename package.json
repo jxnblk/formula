@@ -1,10 +1,11 @@
 {
   "name": "formula",
   "version": "1.0.0",
-  "description": "Bulletproof form and button styles that always line up",
+  "description": "CSS calculator for bulletproof form and button styles that always line up",
   "main": "index.js",
   "scripts": {
-    "bundle": "webpack -p",
+    "build": "webpack -p",
+    "gh-pages": "gh-pages -d build",
     "start": "webpack-dev-server"
   },
   "keywords": [],
@@ -19,12 +20,18 @@
     "choo": "^2.3.0",
     "color": "^0.11.3",
     "gh-pages": "^0.11.0",
+    "html-loader": "^0.4.3",
     "hyperscript": "^1.4.7",
+    "json-loader": "^0.5.4",
     "jsxcss": "^1.0.0-beta.1",
+    "markdown-loader": "^0.1.7",
     "rollup": "^0.33.0",
     "rollup-watch": "^2.4.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
     "yo-yo": "^1.2.1"
+  },
+  "dependencies": {
+    "webfontloader": "^1.6.24"
   }
 }

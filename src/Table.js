@@ -1,7 +1,6 @@
 
 import { hcss } from 'jsxcss'
 import yo from 'yo-yo'
-import h from 'hyperscript'
 import { alpha } from './util/colors'
 
 const Table = ({
@@ -31,6 +30,9 @@ const Table = ({
       // paddingBottom: 4,
       borderBottom: '1px solid',
       borderColor: alpha('#000', 1/8),
+      '@media screen and (max-width: 32em)': {
+        // display: 'block'
+      }
     }
   }
 

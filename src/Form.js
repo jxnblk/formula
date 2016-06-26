@@ -33,10 +33,11 @@ const Form = ({
           ],
           rows: scale.map((s, i) => {
             const nonInt = getHeight(s) % 1 > 0
+            const nonIntLh = (s * lineHeight) % 1 > 0
             const isBase = s === 16
             const props = {
               hideLabel: true,
-              big: isBase
+              // big: isBase
             }
             return {
               style: {
@@ -71,8 +72,13 @@ const Form = ({
                   name: 'lineHeight',
                   label: 'Line Height',
                   value: lineHeight,
+                  suffix: `(${s * lineHeight}px)`,
                   oninput: (e) => {
                     handleChange(e)
+                  },
+                  style: {
+                    color: nonIntLh ? red : null,
+                    backgroundColor: nonIntLh ? alpha(red, 1/8) : null,
                   },
                   min: 1.25,
                   max: 2,

@@ -1,6 +1,5 @@
 
 import { hcss } from 'jsxcss'
-import h from 'hyperscript'
 import { red, blue, alpha } from './util/colors'
 import Heading from './Heading'
 import {
@@ -20,6 +19,7 @@ const Preview = ({
   pad,
   padX,
   borderRadius,
+  proportionalBorderRadius,
   showAllElements,
   getHeight,
   ...props
@@ -31,8 +31,8 @@ const Preview = ({
   const paddingRight = paddingLeft
 
   const rowRules = `
-  inset 0 1px ${alpha(red, 1/2)},
-  inset 0 -1px ${alpha(red, 1/2)}
+    inset 0 1px ${alpha(red, 1/4)},
+    inset 0 -1px ${alpha(red, 1/4)}
   `.replace(/\s\s+|\n/, ' ')
   const baseline = `
   linear-gradient(${alpha(red, 1/2)}0px, transparent 1px)
@@ -40,7 +40,7 @@ const Preview = ({
 
   const sx = {
     root: {
-      fontFamily,
+      fontFamily: fontFamily + ', sans-serif',
       paddingTop: 32,
       paddingBottom: 32,
       overflowX: 'scroll',
@@ -48,7 +48,7 @@ const Preview = ({
     row: {
       whiteSpace: 'nowrap',
       boxShadow: rowRules,
-      marginBottom: 16,
+      marginBottom: 32,
       // Account for lineHeight
       // backgroundImage: baseline,
       // backgroundPosition: `0 ${pad + 1 + 2/16}em`,
@@ -122,6 +122,9 @@ const Preview = ({
     extras: {
       display: 'inline-block'
     },
+    footer: {
+      textAlign: 'right'
+    },
     checkbox: {
       fontSize: 12
     }
@@ -130,42 +133,47 @@ const Preview = ({
   return (
     <div style={sx.root}>
       {Heading({ text: 'Preview' })}
-      {scale.map((s, i) => (
-        <div>
-          <div style={{
-            ...sx.row,
-            fontSize: s
-          }}>
-            {showAllElements ? (
-              <label style={sx.label}>{s}px Label</label>
-            ) : null}
-            <input style={sx.input}
-              value={`${s}px Input`} />
-            <button style={sx.button}>Button</button>
-            {showAllElements ? (
-              <div style={sx.extras}>
-                <a href='#!' style={sx.button}>Link Button</a>
-                <input type='button' style={sx.button} value='Input Button' />
-                <input style={sx.input} placeholder='placeholder' />
-              </div>
-            ) : null}
-            <code style={sx.code}>
-              font-size: {round(s, 1)}px,
-              height: {round(getHeight(s), 2)}px,
-              padding-top: {round(padding.top, 5)}em,
-              padding-bottom: {round(padding.bottom, 5)}em
-            </code>
+      {scale.map((s, i) => {
+        const radius = proportionalBorderRadius ? (borderRadius / 16 * s) : borderRadius
+        const inputStyle = { ...sx.input, borderRadius: radius }
+        const buttonStyle = { ...sx.button, borderRadius: radius }
+        return (
+          <div>
+            <div style={{
+              ...sx.row,
+              fontSize: s
+            }}>
+              {showAllElements ? (
+                <label style={sx.label}>{s}px Label</label>
+              ) : null}
+              <input style={inputStyle}
+                value={`${s}px Input`} />
+              <button style={buttonStyle}>Button</button>
+              {showAllElements ? (
+                <div style={sx.extras}>
+                  <a href='#!' style={buttonStyle}>Link Button</a>
+                  <input type='button' style={buttonStyle} value='Input Button' />
+                  <input style={inputStyle} placeholder='placeholder' />
+                </div>
+              ) : null}
+              <code style={sx.code}>
+                font-size: {round(s, 1)}px,
+                height: {round(getHeight(s), 2)}px,
+                padding-top: {round(padding.top, 5)}em,
+                padding-bottom: {round(padding.bottom, 5)}em
+              </code>
+            </div>
           </div>
-        </div>
-      ))}
-      <div>
+        )
+      })}
+      <div style={sx.footer}>
         <label style={sx.checkbox}>
-          {h('input', {
-            name: 'showAllElements',
-            type: 'checkbox',
-            checked: showAllElements,
-            onchange: (e) => handleToggle(e)
-          })}
+          <input
+            name='showAllElements'
+            type='checkbox'
+            checked={showAllElements}
+            onchange={(e) => handleToggle(e)} />
+
           Show more elements
         </label>
       </div>

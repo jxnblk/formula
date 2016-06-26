@@ -7,9 +7,11 @@ import {
 
 const Header = ({ title, description, fontFamily }) => {
   const sx = {
-    root: {},
+    root: {
+      marginBottom: 32
+    },
     title: {
-      marginBottom: 0
+      marginBottom: 8
     },
     description: {
       marginTop: 0

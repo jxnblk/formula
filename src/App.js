@@ -1,12 +1,13 @@
 
 import { hcss } from 'jsxcss'
-import Heading from './Heading'
-import Form from './Form'
-import ExtrasForm from './ExtrasForm'
 import Header from './Header'
+import Form from './Form'
 import Preview from './Preview'
+import ExtrasForm from './ExtrasForm'
+import About from './About'
 import Css from './Css'
 import State from './State'
+import Footer from './Footer'
 import { red, alpha } from './util/colors'
 
 
@@ -24,7 +25,12 @@ const App = (store) => {
   const sx = {
     root: {
       paddingLeft: 32,
-      paddingRight: 32
+      paddingRight: 32,
+      '@media screen and (min-width: 52em)': {
+        paddingTop: 32,
+        paddingLeft: 64,
+        paddingRight: 64,
+      }
     }
   }
 
@@ -34,8 +40,9 @@ const App = (store) => {
       {Form(state)}
       {Preview(state)}
       {ExtrasForm(state)}
+      {About()}
       {Css(state)}
-      {State(state)}
+      {Footer()}
     </div>
   )
 }

@@ -10,6 +10,7 @@ const Input = ({
   oninput,
   hideLabel,
   big,
+  suffix,
   ...props
 }) => {
   const labelStyles = hideLabel ? {
@@ -27,6 +28,7 @@ const Input = ({
 
   const sx = {
     root: {
+      position: 'relative',
     },
     label: {
       ...labelStyles
@@ -39,12 +41,12 @@ const Input = ({
       fontSize: 'inherit',
       lineHeight: 1.375,
       paddingLeft: 4,
-      paddingRight: 4,
+      paddingRight: 4, // suffix ? (suffix.length * 6) : 4,
       paddingTop,
       paddingBottom,
       margin: 0,
+      overflow: 'hidden',
       backgroundColor: 'transparent',
-      // backgroundColor: alpha('#07c', 1/32),
       border: 0,
       borderRadius: 0,
       boxShadow: 'none',
@@ -68,7 +70,24 @@ const Input = ({
       '::-webkit-outer-spin-button': {
         appearance: 'none'
       }
+    },
+    suffix: {
+      position: 'absolute',
+      right: 4,
+      bottom: 7,
+      fontSize: 12,
+      opacity: .5,
+      '@media screen and (max-width: 40em)': {
+        display: 'none'
+      }
     }
+  }
+
+  const noAuto = {
+    autoComplete: 'off',
+    autoCorrect: 'off',
+    autoCapitalize: 'off',
+    spellCheck: 'off',
   }
 
   return (
@@ -79,12 +98,18 @@ const Input = ({
       </label>
       <input
         {...props}
+        {...noAuto}
         type={type}
         name={name}
         id={name}
         value={value}
         style={sx.input}
         oninput={oninput} />
+      {suffix ? (
+        <div style={sx.suffix}>
+          {suffix}
+        </div>
+      ) : null}
     </div>
   )
 }
