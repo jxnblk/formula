@@ -60,6 +60,11 @@ const Preview = ({
       color: alpha(red, 1/4)
     },
     label: {
+      display: 'inline-block',
+      width: 96,
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
       marginRight: 16
     },
     input: {
@@ -135,8 +140,13 @@ const Preview = ({
       {/* Heading({ text: 'Preview' }) */}
       {scale.map((s, i) => {
         const radius = proportionalBorderRadius ? (borderRadius / 16 * s) : borderRadius
-        const inputStyle = { ...sx.input, borderRadius: radius }
+        const inputStyle = {
+          ...sx.input,
+          width: 256,
+          borderRadius: radius
+        }
         const buttonStyle = { ...sx.button, borderRadius: radius }
+
         return (
           <div>
             <div style={{
@@ -144,7 +154,7 @@ const Preview = ({
               fontSize: s
             }}>
               {showAllElements ? (
-                <label style={sx.label}>{s}px Label</label>
+                <label style={sx.label}>Label</label>
               ) : null}
               <input style={inputStyle}
                 value={`${s}px Input`} />
