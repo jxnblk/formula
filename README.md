@@ -1,5 +1,8 @@
 
+# Formula
 
-- [ ] componentDidMount method equivalent?
-- [ ] Look into nestable hyperscript jsx (preact)
+CSS calculator for bulletproof form and button styles that always line up
+
+http://jxnblk.com/formula
+
 

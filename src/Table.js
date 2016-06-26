@@ -1,6 +1,5 @@
 
 import { hcss } from 'jsxcss'
-import yo from 'yo-yo'
 import { alpha } from './util/colors'
 
 const Table = ({

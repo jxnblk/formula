@@ -55,6 +55,9 @@ const css = `
     pre: {
       fontFamily: 'Menlo, monospace',
       fontSize: 12,
+      lineHeight: 1.375,
+      padding: 0,
+      margin: 0,
       color: '#444',
     }
   }

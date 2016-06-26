@@ -4,7 +4,6 @@ import pkg from '../package.json'
 import { getParams } from './location'
 
 const initialState = getParams()
-// console.log(initialState)
 
 const store = createStore({
   title: 'Formula',
@@ -81,7 +80,6 @@ export const handleHeightChange = (e, i) => {
       pad
     })
   } else if (value.length === 0) {
-    // To do: handle blank values
     return
   } else {
     update()

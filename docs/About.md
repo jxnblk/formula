@@ -2,6 +2,8 @@
 ## About
 
 Formula is a calculator for creating em-based form and button styles that vertically align.
+This is loosely based on calculations that I would have previously done manually,
+but that are easily displayed using functional UI components.
 
 When calculated values for total height or line height are non-integer values,
 the fields are highlighted in red to warn about sub-pixel rendering issues.

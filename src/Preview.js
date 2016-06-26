@@ -46,7 +46,7 @@ const Preview = ({
     },
     row: {
       whiteSpace: 'nowrap',
-      boxShadow: rowRules,
+      // boxShadow: rowRules,
       marginTop: 32,
       marginBottom: 8,
       // Account for lineHeight
@@ -132,7 +132,7 @@ const Preview = ({
 
   return (
     <div style={sx.root}>
-      {Heading({ text: 'Preview' })}
+      {/* Heading({ text: 'Preview' }) */}
       {scale.map((s, i) => {
         const radius = proportionalBorderRadius ? (borderRadius / 16 * s) : borderRadius
         const inputStyle = { ...sx.input, borderRadius: radius }
@@ -156,12 +156,14 @@ const Preview = ({
                   <input style={inputStyle} placeholder='placeholder' />
                 </div>
               ) : null}
+              {/*
               <code style={sx.code}>
                 font-size: {round(s, 1)}px,
                 height: {round(getHeight(s), 2)}px,
                 padding-top: {round(padding.top, 5)}em,
                 padding-bottom: {round(padding.bottom, 5)}em
               </code>
+              */}
             </div>
           </div>
         )

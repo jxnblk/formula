@@ -1,16 +1,16 @@
 
-import yo from 'yo-yo'
 import store from './store'
 import App from './App'
 import { handleFontChange } from './webfonts'
 import { updateParams } from './location'
+import updateDOM from './update-dom'
 
 const div = document.getElementById('app')
 const tree = App(store)
 
 const update = () => {
   var newTree = App(store)
-  yo.update(tree, newTree)
+  updateDOM(tree, newTree)
 }
 
 store.subscribe(update)

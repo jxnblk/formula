@@ -15,18 +15,21 @@ input[type=number]{-moz-appearance:textfield!important}
 }
 </style>
 <header class='px2 sm-px3 md-px4'>
-  <h1 style='margin-bottom:0'>Formula</h1>
-  <p style='margin-top:8px'>
-    CSS calculator for bulletproof form and button styles that always line up
-  </p>
-  <a href='https://twitter.com/share'
-    style='min-height:20px'
-    class='twitter-share-button'
-    data-url='http://jxnblk.com/formula/'
-    data-text='Formula: bulletproof form and button styles that always line up'
-    data-via='jxnblk'>
-    Tweet
-  </a>
+  <div style='display:inline-block;vertical-align:middle;margin-right:48px'>
+    <h1 style='margin-bottom:0'>Formula</h1>
+    <p style='margin-top:8px'>
+      CSS calculator for bulletproof form and button styles that always line up
+    </p>
+  </div><div style='display:inline-block;vertical-align:middle'>
+    <a href='https://twitter.com/share'
+      style='min-height:20px'
+      class='twitter-share-button'
+      data-url='http://jxnblk.com/formula/'
+      data-text='Formula: bulletproof form and button styles that always line up'
+      data-via='jxnblk'>
+      Tweet
+    </a>
+  </div>
 </header>
 <div id='app'></div>
 <script src='bundle.js'></script>
@@ -38,10 +41,11 @@ input[type=number]{-moz-appearance:textfield!important}
 <div>
   <style>
   #carbonads {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    bottom: 0;
     right: 0;
-    margin: 16px;
+    padding: 8px;
+    background-color: #fff;
   }
   @media screen and (max-width: 56em) {
     #carbonads {

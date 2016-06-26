@@ -32,6 +32,23 @@ const App = (store) => {
         paddingLeft: 64,
         paddingRight: 64,
       }
+    },
+    about: {
+      '@media screen and (min-width:64em)': {
+        display: 'inline-block',
+        verticalAlign: 'top',
+        boxSizing: 'border-box',
+        width: '75%',
+        paddingRight: 32
+      }
+    },
+    css: {
+      '@media screen and (min-width:64em)': {
+        display: 'inline-block',
+        verticalAlign: 'top',
+        width: '25%',
+        marginTop: 48
+      }
     }
   }
 
@@ -40,8 +57,14 @@ const App = (store) => {
       {Form(state)}
       {Preview(state)}
       {ExtrasForm(state)}
-      {About()}
-      {Css(state)}
+      <div>
+        <div style={sx.about}>
+          {About()}
+        </div>
+        <div style={sx.css}>
+          {Css(state)}
+        </div>
+      </div>
       {Footer()}
     </div>
   )
