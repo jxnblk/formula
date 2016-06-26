@@ -4,10 +4,14 @@ import {
   handleChange,
   handleScaleChange,
   handleHeightChange,
-  handleBaselineChange
+  handleBaselineChange,
+  addFontSize,
+  removeFontSize,
 } from './store'
 import Table from './Table'
 import Input from './Input'
+import Remove from './Remove'
+import Button from './Button'
 import { red, alpha } from './util/colors'
 
 const Form = ({
@@ -24,17 +28,25 @@ const Form = ({
         {Table({
           fixed: true,
           headers: [
-            'Font Size',
-            'Total Height',
-            'Line Height',
-            'Y Padding (em)',
-            'Baseline Shift (em)',
-            'Border Width',
+            { data: 'Font Size' },
+            { data: 'Total Height' },
+            { data: 'Line Height' },
+            { data: 'Y Padding (em)' },
+            { data: 'Baseline Shift (em)' },
+            { data: 'Border Width' },
+            {
+              style: {
+                width: 32,
+                textAlign: 'right'
+              },
+              data: ''
+            },
           ],
           rows: scale.map((s, i) => {
             const nonInt = getHeight(s) % 1 > 0
             const nonIntLh = (s * lineHeight) % 1 > 0
             const isBase = s === 16
+            const isFirst = i === 0
             const props = {
               hideLabel: true,
               // big: isBase
@@ -49,7 +61,7 @@ const Form = ({
                   name: `scale_${i}`,
                   label: `Scale ${i}`,
                   value: s,
-                  readOnly: isBase,
+                  readOnly: isFirst,
                   oninput: (e) => {
                     handleScaleChange(e, i)
                   }
@@ -115,12 +127,27 @@ const Form = ({
                   oninput: (e) => handleChange(e),
                   min: 0,
                   max: 8
+                }),
+                isFirst ? null : Remove({
+                  onclick: (e) => {
+                    e.preventDefault()
+                    removeFontSize(i)
+                  }
                 })
               ]
             }
           })
         })}
       </form>
+      <div style={{ textAlign: 'center' }}>
+        {Button({
+          onclick: (e) => {
+            e.preventDefault()
+            addFontSize()
+          },
+          text: '+ Add'
+        })}
+      </div>
     </div>
   )
 }

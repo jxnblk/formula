@@ -43,7 +43,11 @@ const Table = ({
     <table style={sx.root}>
       <thead>
         <tr>
-          {headers.map(th => <th style={sx.th}>{th}</th>)}
+          {headers.map(th => (
+            <th style={{ ...sx.th, ...th.style }}>
+              {th.data || th}
+            </th>
+          ))}
         </tr>
       </thead>
       <tbody>

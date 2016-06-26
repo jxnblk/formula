@@ -101,6 +101,19 @@ export const handleBaselineChange = (e) => {
   }
 }
 
+export const addFontSize = () => {
+  const { state, setState } = store
+  const { scale } = state
+  scale.push(16)
+  setState({ scale })
+}
+
+export const removeFontSize = (i) => {
+  const { state, setState } = store
+  const { scale } = state
+  scale.splice(i, 1)
+  setState({ scale })
+}
 
 export default store
 
