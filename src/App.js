@@ -1,5 +1,5 @@
 
-import { hcss } from 'jsxcss'
+import { hcxs } from 'jsxcss'
 import Form from './Form'
 import Preview from './Preview'
 import ExtrasForm from './ExtrasForm'

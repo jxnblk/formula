@@ -1,5 +1,5 @@
 
-import { hcss } from 'jsxcss'
+import { hcxs } from 'jsxcss'
 import { red, blue, alpha } from './util/colors'
 import Heading from './Heading'
 import {
@@ -46,12 +46,8 @@ const Preview = ({
     },
     row: {
       whiteSpace: 'nowrap',
-      // boxShadow: rowRules,
       marginTop: 32,
-      marginBottom: 8,
-      // Account for lineHeight
-      // backgroundImage: baseline,
-      // backgroundPosition: `0 ${pad + 1 + 2/16}em`,
+      marginBottom: 8
     },
     code: {
       fontFamily: 'Menlo, monospace',

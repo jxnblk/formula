@@ -1,5 +1,5 @@
 
-import { hcss } from 'jsxcss'
+import { hcxs } from 'jsxcss'
 
 const Heading = ({
   text

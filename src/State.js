@@ -1,5 +1,5 @@
 
-import { hcss } from 'jsxcss'
+import { hcxs } from 'jsxcss'
 import { blue, alpha } from './util/colors'
 
 const State = (state) => {

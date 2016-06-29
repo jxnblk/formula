@@ -1,5 +1,5 @@
 
-import { hcss } from 'jsxcss'
+import { hcxs } from 'jsxcss'
 import { alpha } from './util/colors'
 
 const Select = ({

@@ -1,5 +1,5 @@
 
-import { hcss } from 'jsxcss'
+import { hcxs } from 'jsxcss'
 import content from '../docs/About.md'
 
 const html = (str) => {
