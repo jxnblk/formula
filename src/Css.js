@@ -53,7 +53,7 @@ const css = `
       marginBottom: 48
     },
     pre: {
-      fontFamily: 'Menlo, monospace',
+      fontFamily: `'SFMono-Regular', Menlo, monospace`,
       fontSize: 12,
       lineHeight: 1.375,
       padding: 0,
@@ -70,4 +70,3 @@ const css = `
 }
 
 export default Css
-
