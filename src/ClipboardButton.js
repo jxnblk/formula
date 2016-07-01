@@ -3,7 +3,7 @@ import { hcss } from 'jsxcss'
 import Button from './Button'
 import Clipboard from 'clipboard'
 
-const ClipboardButton = ({ css }) => {
+const ClipboardButton = () => {
   const button = Button({
     text: 'Copy to Clipboard',
     id: 'copy',

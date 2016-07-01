@@ -66,7 +66,7 @@ const css = `
     <section style={sx.root}>
       {Heading({ text: 'CSS' })}
       <pre style={sx.pre} id='css'>{css}</pre>
-      {ClipboardButton({ css })}
+      {ClipboardButton()}
     </section>
   )
 }
