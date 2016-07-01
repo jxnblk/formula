@@ -3,7 +3,7 @@ import { hcss } from 'jsxcss'
 
 const Button = ({
   text,
-  onclick
+  ...props
 }) => {
   const sx = {
     display: 'inline-block',
@@ -24,11 +24,10 @@ const Button = ({
   return (
     <button
       style={sx}
-      onclick={onclick}>
+      {...props}>
       {text}
     </button>
   )
 }
 
 export default Button
-
