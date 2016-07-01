@@ -3,6 +3,7 @@ import { hcss } from 'jsxcss'
 
 const Button = ({
   text,
+  style,
   ...props
 }) => {
   const sx = {
@@ -16,6 +17,7 @@ const Button = ({
     cursor: 'pointer',
     appearance: 'none',
     opacity: .5,
+    ...style,
     ':hover': {
       opacity: 1
     }
