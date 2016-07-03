@@ -1,5 +1,4 @@
 
-import { hcss } from 'jsxcss'
 import {
   handleChange,
   handleToggle
@@ -76,9 +75,9 @@ const Form = ({
                   oninput: (e) => handleChange(e),
                   min: 0
                 }),
-                <label style={{ fontSize: 14 }}>
+                <label className={{ fontSize: 14 }}>
                   <input type='checkbox'
-                    style={{ marginRight: 8 }}
+                    className={{ marginRight: 8 }}
                     name='proportionalBorderRadius'
                     checked={proportionalBorderRadius}
                     onchange={(e) => handleToggle(e)} />

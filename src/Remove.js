@@ -1,10 +1,8 @@
 
-import { hcss } from 'jsxcss'
-
 const Remove = ({
   onclick
 }) => {
-  const sx = {
+  const cx = {
     display: 'inline-block',
     fontSize: 20,
     lineHeight: 1.25,
@@ -27,7 +25,7 @@ const Remove = ({
 
   return (
     <button
-      style={sx}
+      className={cx}
       title='Remove'
       onclick={onclick}>
       &times;
@@ -35,5 +33,6 @@ const Remove = ({
   )
 }
 
+// ✕
 export default Remove
 

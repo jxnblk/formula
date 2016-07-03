@@ -1,5 +1,4 @@
 
-import { hcss } from 'jsxcss'
 import { alpha } from './util/colors'
 
 const Input = ({
@@ -26,7 +25,7 @@ const Input = ({
   const paddingTop = big ? 12 : 4
   const paddingBottom = paddingTop
 
-  const sx = {
+  const cx = {
     root: {
       position: 'relative',
     },
@@ -50,8 +49,9 @@ const Input = ({
       border: 0,
       borderRadius: 0,
       boxShadow: 'none',
-      appearance: 'none',
-      ...props.style,
+      MozAppearance: 'none',
+      WebkitAppearance: 'none',
+      ...props.className,
       ':focus': {
         outline: 'none',
         color: '#07c',
@@ -65,10 +65,10 @@ const Input = ({
         backgroundColor: alpha('#000', 1/32)
       },
       '::-webkit-inner-spin-button': {
-        appearance: 'none'
+        WebkitAppearance: 'none'
       },
       '::-webkit-outer-spin-button': {
-        appearance: 'none'
+        WebkitAppearance: 'none'
       }
     },
     suffix: {
@@ -91,9 +91,9 @@ const Input = ({
   }
 
   return (
-    <div style={sx.root}>
+    <div className={cx.root}>
       <label htmlFor={name}
-        style={sx.label}>
+        className={cx.label}>
         {label}
       </label>
       <input
@@ -103,10 +103,10 @@ const Input = ({
         name={name}
         id={name}
         value={value}
-        style={sx.input}
+        className={cx.input}
         oninput={oninput} />
       {suffix ? (
-        <div style={sx.suffix}>
+        <div className={cx.suffix}>
           {suffix}
         </div>
       ) : null}

@@ -1,5 +1,4 @@
 
-import { hcss } from 'jsxcss'
 import { alpha } from './util/colors'
 
 const Select = ({
@@ -33,7 +32,7 @@ const Select = ({
       backgroundPosition: 'right 8px center, right 14px center'
   }
 
-  const sx = {
+  const cx = {
     root: {
     },
     label: {
@@ -57,9 +56,10 @@ const Select = ({
       // borderColor: alpha('#000', 1/4),
       borderRadius: 2,
       boxShadow: 'none',
-      appearance: 'none',
+      WebkitAppearance: 'none',
+      MozAppearance: 'none',
       ...arrowStyles,
-      ...props.style,
+      ...props.className,
       ':focus': {
         outline: 'none',
         color: '#07c',
@@ -72,16 +72,16 @@ const Select = ({
   }
 
   return (
-    <div style={sx.root}>
+    <div className={cx.root}>
       <label htmlFor={name}
-        style={sx.label}>
+        className={cx.label}>
         {label}
       </label>
       <select
         name={name}
         id={name}
         value={value}
-        style={sx.select}
+        className={cx.select}
         oninput={(e) => {
           e.preventDefault()
           oninput(e)

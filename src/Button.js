@@ -1,12 +1,10 @@
 
-import { hcss } from 'jsxcss'
-
 const Button = ({
   text,
   style,
   ...props
 }) => {
-  const sx = {
+  const cx = {
     display: 'inline-block',
     fontSize: 14,
     // fontWeight: 'bold',
@@ -25,7 +23,7 @@ const Button = ({
 
   return (
     <button
-      style={sx}
+      className={cx}
       {...props}>
       {text}
     </button>

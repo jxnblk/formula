@@ -1,10 +1,8 @@
 
-import { hcss } from 'jsxcss'
-
 const Heading = ({
   text
 }) => {
-  const sx = {
+  const cx = {
     fontSize: 14,
     lineHeight: 1.25,
     marginTop: 32,
@@ -14,7 +12,7 @@ const Heading = ({
   }
 
   return (
-    <h2 style={sx}>{text}</h2>
+    <h2 className={cx}>{text}</h2>
   )
 }
 export default Heading

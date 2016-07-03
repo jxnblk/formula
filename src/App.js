@@ -1,5 +1,4 @@
 
-import { hcss } from 'jsxcss'
 import Form from './Form'
 import Preview from './Preview'
 import ExtrasForm from './ExtrasForm'
@@ -19,7 +18,7 @@ const App = (store) => {
     pad
   } = state
 
-  const sx = {
+  const cx = {
     root: {
       paddingLeft: 16,
       paddingRight: 16,
@@ -53,15 +52,15 @@ const App = (store) => {
   }
 
   return (
-    <div style={sx.root}>
+    <div className={cx.root}>
       {Form(state)}
       {Preview(state)}
       {ExtrasForm(state)}
       <div>
-        <div style={sx.about}>
+        <div className={cx.about}>
           {About()}
         </div>
-        <div style={sx.css}>
+        <div className={cx.css}>
           {Css(state)}
         </div>
       </div>

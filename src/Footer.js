@@ -1,5 +1,4 @@
 
-import { hcss } from 'jsxcss'
 import Heading from './Heading'
 
 const related = [
@@ -21,17 +20,13 @@ const Footer = () => {
       textDecoration: 'underline'
     }
   }
-  const sx = {
+  const cx = {
     root: {
       paddingTop: 48,
       paddingBottom: 48,
     },
     related: {
       marginBottom: 48
-    },
-    relatedHeading: {
-      fontSize: 12,
-      margin: 0
     },
     relatedLink: {
       ...linkStyle,
@@ -56,21 +51,18 @@ const Footer = () => {
   }
 
   return (
-    <footer style={sx.root}>
-      <div style={sx.related}>
-        {/*
-        <h4 style={sx.relatedHeading}>Related</h4>
-        */}
+    <footer className={cx.root}>
+      <div className={cx.related}>
         {Heading({ text: 'Related' })}
         {related.map(({ href, text }) => (
-          <a href={href} style={sx.relatedLink}>{text}</a>
+          <a href={href} className={cx.relatedLink}>{text}</a>
         ))}
       </div>
       <div>
-        <a style={sx.link} href='//github.com/jxnblk/formula' style={sx.link}>GitHub</a>
-        <a style={sx.link} href='//jxnblk.com' style={sx.link}>Made by Jxnblk</a>
+        <a href='//github.com/jxnblk/formula' className={cx.link}>GitHub</a>
+        <a href='//jxnblk.com' className={cx.link}>Made by Jxnblk</a>
       </div>
-      <p style={sx.meta}>
+      <p className={cx.meta}>
         For Diana
       </p>
     </footer>

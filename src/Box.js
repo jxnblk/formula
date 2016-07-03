@@ -1,10 +1,8 @@
 
-import { hcss } from 'jsxcss'
-
 const Box = ({
   width = '50%'
 }, children) => {
-  const sx = {
+  const cx = {
     boxSizing: 'border-box',
     display: 'inline-block',
     width: '100%',
@@ -14,7 +12,7 @@ const Box = ({
   }
 
   return (
-    <div style={sx}>
+    <div className={cx}>
       {children}
     </div>
   )

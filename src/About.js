@@ -1,5 +1,4 @@
 
-import { hcss } from 'jsxcss'
 import content from '../docs/About.md'
 
 const html = (str) => {
@@ -9,7 +8,7 @@ const html = (str) => {
 }
 
 const About = () => {
-  const sx = {
+  const cx = {
     root: {
       paddingTop: 48,
       paddingBottom: 48,
@@ -21,8 +20,8 @@ const About = () => {
   }
 
   return (
-    <div style={sx.root}>
-      <div style={sx.content}>
+    <div className={cx.root}>
+      <div className={cx.content}>
         {html(content)}
       </div>
     </div>

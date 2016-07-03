@@ -1,5 +1,4 @@
 
-import { hcss } from 'jsxcss'
 import { padding } from './store'
 import Heading from './Heading'
 import ClipboardButton from './ClipboardButton'
@@ -49,7 +48,7 @@ const css = `
 }
 `
 
-  const sx = {
+  const cx = {
     root: {
       marginBottom: 48
     },
@@ -62,10 +61,11 @@ const css = `
       color: '#444',
     }
   }
+
   return (
-    <section style={sx.root}>
+    <section className={cx.root}>
       {Heading({ text: 'CSS' })}
-      <pre style={sx.pre} id='css'>{css}</pre>
+      <pre className={cx.pre} id='css'>{css}</pre>
       {ClipboardButton()}
     </section>
   )
