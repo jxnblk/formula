@@ -57,10 +57,8 @@ const Preview = ({
     },
     label: {
       display: 'inline-block',
-      width: 96,
-      overflow: 'hidden',
-      whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis',
+      verticalAlign: 'baseline',
+      minWidth: 96,
       marginRight: 16
     },
     input: {
@@ -162,14 +160,6 @@ const Preview = ({
                   <input style={inputStyle} placeholder='placeholder' />
                 </div>
               ) : null}
-              {/*
-              <code style={sx.code}>
-                font-size: {round(s, 1)}px,
-                height: {round(getHeight(s), 2)}px,
-                padding-top: {round(padding.top, 5)}em,
-                padding-bottom: {round(padding.bottom, 5)}em
-              </code>
-              */}
             </div>
           </div>
         )

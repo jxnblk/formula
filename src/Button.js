@@ -3,7 +3,8 @@ import { hcxs } from 'jsxcss'
 
 const Button = ({
   text,
-  onclick
+  style,
+  ...props
 }) => {
   const sx = {
     display: 'inline-block',
@@ -16,6 +17,7 @@ const Button = ({
     cursor: 'pointer',
     appearance: 'none',
     opacity: .5,
+    ...style,
     ':hover': {
       opacity: 1
     }
@@ -24,11 +26,10 @@ const Button = ({
   return (
     <button
       style={sx}
-      onclick={onclick}>
+      {...props}>
       {text}
     </button>
   )
 }
 
 export default Button
-

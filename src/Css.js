@@ -1,7 +1,8 @@
 
 import { hcxs } from 'jsxcss'
-import Heading from './Heading'
 import { padding } from './store'
+import Heading from './Heading'
+import ClipboardButton from './ClipboardButton'
 
 const Css = ({
   lineHeight,
@@ -53,7 +54,7 @@ const css = `
       marginBottom: 48
     },
     pre: {
-      fontFamily: 'Menlo, monospace',
+      fontFamily: `'SFMono-Regular', Menlo, monospace`,
       fontSize: 12,
       lineHeight: 1.375,
       padding: 0,
@@ -64,10 +65,10 @@ const css = `
   return (
     <section style={sx.root}>
       {Heading({ text: 'CSS' })}
-      <pre style={sx.pre}>{css}</pre>
+      <pre style={sx.pre} id='css'>{css}</pre>
+      {ClipboardButton()}
     </section>
   )
 }
 
 export default Css
-
