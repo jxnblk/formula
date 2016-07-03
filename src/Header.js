@@ -1,12 +1,11 @@
 
-import { hcxs } from 'jsxcss'
 import Select from './Select'
 import {
   handleChange
 } from './store'
 
 const Header = ({ title, description, fontFamily }) => {
-  const sx = {
+  const cx = {
     root: {
       marginBottom: 32
     },
@@ -19,9 +18,9 @@ const Header = ({ title, description, fontFamily }) => {
   }
 
   return (
-    <header style={sx.root}>
-      <h1 style={sx.title}>{title}</h1>
-      <p style={sx.description}>{description}</p>
+    <header className={cx.root}>
+      <h1 className={cx.title}>{title}</h1>
+      <p className={cx.description}>{description}</p>
     </header>
   )
 }

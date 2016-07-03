@@ -1,5 +1,4 @@
 
-import { hcxs } from 'jsxcss'
 import { alpha } from './util/colors'
 
 const Table = ({
@@ -7,7 +6,7 @@ const Table = ({
   rows = [],
   fixed
 }) => {
-  const sx = {
+  const cx = {
     root: {
       width: '100%',
       borderCollapse: 'separate',
@@ -39,11 +38,11 @@ const Table = ({
   }
 
   return (
-    <table style={sx.root}>
+    <table className={cx.root}>
       <thead>
         <tr>
           {headers.map(th => (
-            <th style={{ ...sx.th, ...th.style }}>
+            <th className={{ ...cx.th, ...th.style }}>
               {th.data || th}
             </th>
           ))}
@@ -51,9 +50,9 @@ const Table = ({
       </thead>
       <tbody>
         {rows.map(r => (
-          <tr style={r.style}>
+          <tr className={r.style}>
             {r.data.map(d => (
-              <td style={sx.td}>
+              <td className={cx.td}>
                 {d}
               </td>
             ))}

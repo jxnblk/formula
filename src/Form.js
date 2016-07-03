@@ -1,5 +1,4 @@
 
-import { hcxs } from 'jsxcss'
 import {
   handleChange,
   handleScaleChange,
@@ -52,8 +51,6 @@ const Form = ({
               // big: isBase
             }
             return {
-              style: {
-              },
               data: [
                 Input({
                   ...props,
@@ -73,7 +70,7 @@ const Form = ({
                   label: `Height ${i}`,
                   value: getHeight(s),
                   oninput: (e) => handleHeightChange(e, i),
-                  style: {
+                  className: {
                     color: nonInt ? red : null,
                     backgroundColor: nonInt ? alpha(red, 1/8) : null
                   }
@@ -88,7 +85,7 @@ const Form = ({
                   oninput: (e) => {
                     handleChange(e)
                   },
-                  style: {
+                  className: {
                     color: nonIntLh ? red : null,
                     backgroundColor: nonIntLh ? alpha(red, 1/8) : null,
                   },
@@ -139,7 +136,7 @@ const Form = ({
           })
         })}
       </form>
-      <div style={{ textAlign: 'center' }}>
+      <div className={{ textAlign: 'center' }}>
         {Button({
           onclick: (e) => {
             e.preventDefault()

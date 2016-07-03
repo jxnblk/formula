@@ -1,12 +1,10 @@
 
-import cxs from 'cxs'
+import cxs from 'jsxcss/node_modules/cxs'
 import store from './store'
 import App from './App'
 import { handleFontChange } from './webfonts'
 import { updateParams } from './location'
 import updateDOM from './update-dom'
-
-cxs.options.autoAttach = false
 
 const div = document.getElementById('app')
 const tree = App(store)
@@ -16,7 +14,6 @@ const update = () => {
   var newTree = App(store)
   updateDOM(tree, newTree)
   cxs.attach()
-  const css = cxs.css
 }
 
 store.subscribe(update)

@@ -8,13 +8,6 @@ const config = {
     filename: 'bundle.js'
   },
   module: {
-    /*
-    resolve: {
-      alias: {
-        h: 'jsxcss/src/hcxs'
-      }
-    },
-    */
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
       { test: /\.js$/, include: /jsxcss/, loader: 'babel' },

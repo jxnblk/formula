@@ -1,5 +1,4 @@
 
-import { hcxs } from 'jsxcss'
 import { red, blue, alpha } from './util/colors'
 import Heading from './Heading'
 import {
@@ -38,7 +37,7 @@ const Preview = ({
   linear-gradient(${alpha(red, 1/2)}0px, transparent 1px)
   `
 
-  const sx = {
+  const cx = {
     root: {
       fontFamily: fontFamily + ', sans-serif',
       marginBottom: 16,
@@ -130,42 +129,42 @@ const Preview = ({
   }
 
   return (
-    <div style={sx.root}>
+    <div className={cx.root}>
       {/* Heading({ text: 'Preview' }) */}
       {scale.map((s, i) => {
         const radius = proportionalBorderRadius ? (borderRadius / 16 * s) : borderRadius
         const inputStyle = {
-          ...sx.input,
+          ...cx.input,
           width: 256,
           borderRadius: radius
         }
-        const buttonStyle = { ...sx.button, borderRadius: radius }
+        const buttonStyle = { ...cx.button, borderRadius: radius }
 
         return (
           <div>
-            <div style={{
-              ...sx.row,
+            <div className={{
+              ...cx.row,
               fontSize: s
             }}>
               {showAllElements ? (
-                <label style={sx.label}>Label</label>
+                <label className={cx.label}>Label</label>
               ) : null}
-              <input style={inputStyle}
+              <input className={inputStyle}
                 value={`${s}px Input`} />
-              <button style={buttonStyle}>Button</button>
+              <button className={buttonStyle}>Button</button>
               {showAllElements ? (
-                <div style={sx.extras}>
-                  <a href='#!' style={buttonStyle}>Link Button</a>
-                  <input type='button' style={buttonStyle} value='Input Button' />
-                  <input style={inputStyle} placeholder='placeholder' />
+                <div className={cx.extras}>
+                  <a href='#!' className={buttonStyle}>Link Button</a>
+                  <input type='button' className={buttonStyle} value='Input Button' />
+                  <input className={inputStyle} placeholder='placeholder' />
                 </div>
               ) : null}
             </div>
           </div>
         )
       })}
-      <div style={sx.footer}>
-        <label style={sx.checkbox}>
+      <div className={cx.footer}>
+        <label className={cx.checkbox}>
           <input
             name='showAllElements'
             type='checkbox'
