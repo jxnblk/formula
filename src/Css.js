@@ -1,7 +1,8 @@
 
 import { hcss } from 'jsxcss'
-import Heading from './Heading'
 import { padding } from './store'
+import Heading from './Heading'
+import ClipboardButton from './ClipboardButton'
 
 const Css = ({
   lineHeight,
@@ -64,7 +65,8 @@ const css = `
   return (
     <section style={sx.root}>
       {Heading({ text: 'CSS' })}
-      <pre style={sx.pre}>{css}</pre>
+      <pre style={sx.pre} id='css'>{css}</pre>
+      {ClipboardButton()}
     </section>
   )
 }
