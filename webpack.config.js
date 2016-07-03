@@ -1,4 +1,6 @@
 
+const webpack = require('webpack')
+
 const config = {
   entry: './src/entry.js',
   output: {
@@ -6,12 +8,25 @@ const config = {
     filename: 'bundle.js'
   },
   module: {
+    /*
+    resolve: {
+      alias: {
+        h: 'jsxcss/src/hcxs'
+      }
+    },
+    */
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
+      { test: /\.js$/, include: /jsxcss/, loader: 'babel' },
       { test: /\.json$/, loader: 'json' },
       { test: /\.md/, loader: 'html!markdown' },
     ]
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      h: 'jsxcss/src/hcxs'
+    })
+  ],
   devServer: {
     contentBase: 'build'
   }
