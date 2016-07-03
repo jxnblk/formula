@@ -6,8 +6,6 @@ import { handleFontChange } from './webfonts'
 import { updateParams } from './location'
 import updateDOM from './update-dom'
 
-console.log('h', h.default)
-
 cxs.options.autoAttach = false
 
 const div = document.getElementById('app')
@@ -19,7 +17,6 @@ const update = () => {
   updateDOM(tree, newTree)
   cxs.attach()
   const css = cxs.css
-  console.log(cxs, css.length)
 }
 
 store.subscribe(update)
